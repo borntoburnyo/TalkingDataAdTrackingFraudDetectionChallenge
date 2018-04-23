@@ -141,7 +141,7 @@ blend_test = np.zeros((submission.shape[0], len(clfs)))
 
 for i, clf in enumerate(clfs):
     print("{},{}".format(i+1, clf))
-    blend_test_i = np.zeros((submission.shape[0], len(clfs)))
+    blend_test_i = np.zeros((submission.shape[0], 5))
     for j, (train_fold, test_fold) in enumerate(kf):
         print("Fold {}".format(j+1))
         X_train = X[train_fold]
