@@ -130,12 +130,7 @@ with timer('create next_click feature'):
 train.drop('click_time', axis=1, inplace=True)
 test.drop('click_time', axis=1, inplace=True)
 
-gc.collect()
-
-
-    
-    
-    
+gc.collect()  
 
 #train a neural net classifier 
 from sklearn.neural_network import MLPClassifier
@@ -198,7 +193,7 @@ XGBClassifier(max_depth=6,
              random_state=0)
 """
 
-#make meta-learner based on lgb,xgboost and nn
+#make meta-learner based on lgb,xgboost and simple nn
 X = train[features].values
 y = train[target].values.flatten()
 
