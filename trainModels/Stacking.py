@@ -21,11 +21,11 @@ test_cols = ['ip', 'app', 'device', 'os', 'channel', 'click_time']
 
 dtypes = {
 	'ip': 'uint32',
-    'app': 'uint16',
-    'device': 'uint16',
-    'os': 'uint16',
-    'channel': 'uint16',
-    'is_attributed': 'uint8'
+    	'app': 'uint16',
+    	'device': 'uint16',
+    	'os': 'uint16',
+    	'channel': 'uint16',
+    	'is_attributed': 'uint8'
 }
 
 with timer('read training data'):
@@ -64,24 +64,24 @@ groupby_list = [
 	{'groupby': ['ip','app','day','hour'], 'select': 'channel', 'agg': 'count'}
 	
 	#mean per combination of feature
-    {'groupby': ['ip','app','channel'], 'select': 'hour', 'agg': 'mean'}, 
+    	{'groupby': ['ip','app','channel'], 'select': 'hour', 'agg': 'mean'}, 
     
-    #average clicks by distinct users for each app
-    {'groupby': ['ip'], 'select': 'ip', 'agg': lambda x: len(x)/len(x.unique()),
-    'agg_name': 'avgViewDist'},
+    	#average clicks by distinct users for each app
+    	{'groupby': ['ip'], 'select': 'ip', 'agg': lambda x: len(x)/len(x.unique()),
+    	'agg_name': 'avgViewDist'},
     
-    #how many unique counts per ip and combination of features
-    {'groupby': ['ip'], 'select': 'channel', 'agg': 'nunique'}, 
-    {'groupby': ['ip'], 'select': 'app', 'agg': 'nunique'}, 
-    {'groupby': ['ip','day'], 'select': 'hour', 'agg': 'nunique'}, 
-    {'groupby': ['ip','app'], 'select': 'os', 'agg': 'nunique'}, 
-    {'groupby': ['ip'], 'select': 'device', 'agg': 'nunique'}, 
-    {'groupby': ['app'], 'select': 'channel', 'agg': 'nunique'}, 
-    {'groupby': ['ip'], 'select': 'os', 'agg': 'nunique'}, 
+    	#how many unique counts per ip and combination of features
+    	{'groupby': ['ip'], 'select': 'channel', 'agg': 'nunique'}, 
+    	{'groupby': ['ip'], 'select': 'app', 'agg': 'nunique'}, 
+    	{'groupby': ['ip','day'], 'select': 'hour', 'agg': 'nunique'}, 
+    	{'groupby': ['ip','app'], 'select': 'os', 'agg': 'nunique'}, 
+    	{'groupby': ['ip'], 'select': 'device', 'agg': 'nunique'}, 
+    	{'groupby': ['app'], 'select': 'channel', 'agg': 'nunique'}, 
+    	{'groupby': ['ip'], 'select': 'os', 'agg': 'nunique'}, 
     
-    #how many cumulative count of app per ip and other features
-    {'groupby': ['ip','device','os'], 'select': 'app', 'agg': 'cumcount'}, 
-    {'groupby': ['ip'], 'select': 'app', 'agg': 'cumcount'}
+    	#how many cumulative count of app per ip and other features
+   	 {'groupby': ['ip','device','os'], 'select': 'app', 'agg': 'cumcount'}, 
+   	 {'groupby': ['ip'], 'select': 'app', 'agg': 'cumcount'}
 	]
 
 with timer('create groupby features'):
